@@ -6,6 +6,7 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=1
+WorkingDirectory=/home/pi/hubot-sysadmin/
 ExecStart=/home/pi/hubot-sysadmin/startup_script.sh
 
 [Install]
