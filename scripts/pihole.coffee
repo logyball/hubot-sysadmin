@@ -11,7 +11,7 @@ module.exports = (robot) ->
 
   robot.respond /pihole update subsystems/i, (res) ->
     res.send "updating subsystems for pihole (pihole -up)"
-    exec "sudo pihole -up", (error, stdout, stderr) ->
+    exec "sudo apt update -y && pihole -up", (error, stdout, stderr) ->
       res.send "err: " + error.toString() if (error != null)
       res.send stdout if (stdout != null)
       res.send "stderr: " + stderr.toString() if (stderr != null)
