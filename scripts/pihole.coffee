@@ -1,17 +1,17 @@
 exec = require('child_process').exec
 
 module.exports = (robot) ->
-
-  robot.respond /ls/i, (msg) ->
-    msg.send "This is the command ls"
-    exec "ls", (error, stdout, stderr) ->
-      msg.send "err: " + error.toString() if (error != null)
-      msg.send stdout if (stdout != null)
-      msg.send "stderr: " + stderr.toString() if (stderr != null)
-
-  robot.respond /pihole status/i, (msg) ->
-    msg.send "This is the command pihole status"
+  robot.respond /pihole status/i, (res) ->
+    res.send "This is the command pihole status"
     exec "pihole status", (error, stdout, stderr) ->
-      msg.send "err: " + error.toString() if (error != null)
-      msg.send stdout if (stdout != null)
-      msg.send "stderr: " + stderr.toString() if (stderr != null)
+      res.send "err: " + error.toString() if (error != null)
+      res.send stdout if (stdout != null)
+      res.send "stderr: " + stderr.toString() if (stderr != null)
+
+
+  robot.respond /pihole update subsystems/i, (res) ->
+    res.send "updating subsystems for pihole (pihole -up)"
+    exec "sudo pihole -up", (error, stdout, stderr) ->
+      res.send "err: " + error.toString() if (error != null)
+      res.send stdout if (stdout != null)
+      res.send "stderr: " + stderr.toString() if (stderr != null)
