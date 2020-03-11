@@ -12,6 +12,10 @@ channel and your hubot user!
 [hubot]: http://hubot.github.com
 [generator-hubot]: https://github.com/github/generator-hubot
 
+### Example Usage
+
+![Demo](./img/hubot-sysadmin-example.gif)
+
 ## Setup
 
 TODO - make this reader friendly.
