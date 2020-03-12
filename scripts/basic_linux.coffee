@@ -13,7 +13,7 @@ module.exports = (robot) ->
     exec "df -h", (error, stdout, stderr) ->
       res.send "err: " + error.toString() if (error != null)
       res.send stdout if (stdout != null)
-      res.send "stderr: " + stderr.toString() if (stderr != null)
+      res.send "stderr: " + stderr.toString() if (stderr != "")
 
 
   robot.respond /top cpu/i, (res) ->
@@ -21,11 +21,11 @@ module.exports = (robot) ->
     exec "top -b -n 1 -o %CPU | head -n 17", (error, stdout, stderr) ->
       res.send "err: " + error.toString() if (error != null)
       res.send stdout if (stdout != null)
-      res.send "stderr: " + stderr.toString() if (stderr != null)
+      res.send "stderr: " + stderr.toString() if (stderr != "")
 
   robot.respond /top mem/i, (res) ->
     res.send "Showing top 10 processes by memory usage"
     exec "top -b -n 1 -o %MEM | head -n 17", (error, stdout, stderr) ->
       res.send "err: " + error.toString() if (error != null)
       res.send stdout if (stdout != null)
-      res.send "stderr: " + stderr.toString() if (stderr != null)
+      res.send "stderr: " + stderr.toString() if (stderr != "")

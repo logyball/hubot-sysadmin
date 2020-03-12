@@ -13,7 +13,7 @@ module.exports = (robot) ->
     exec "pihole status", (error, stdout, stderr) ->
       res.send "err: " + error.toString() if (error != null)
       res.send stdout if (stdout != null)
-      res.send "stderr: " + stderr.toString() if (stderr != null)
+      res.send "stderr: " + stderr.toString() if (stderr != "")
 
 
   robot.respond /pihole up/i, (res) ->
@@ -21,4 +21,4 @@ module.exports = (robot) ->
     exec "sudo apt update -y && pihole -up", (error, stdout, stderr) ->
       res.send "err: " + error.toString() if (error != null)
       res.send stdout if (stdout != null)
-      res.send "stderr: " + stderr.toString() if (stderr != null)
+      res.send "stderr: " + stderr.toString() if (stderr != "")
