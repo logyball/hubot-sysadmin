@@ -1,3 +1,10 @@
+# Description:
+#    Runs pihole admin commands
+#
+# Commands:
+#    sysadmin pihole status: outputs the status of the pihole
+#    sysadmin pihole up: runs pihole update of subsystems
+
 exec = require('child_process').exec
 
 module.exports = (robot) ->
@@ -9,7 +16,7 @@ module.exports = (robot) ->
       res.send "stderr: " + stderr.toString() if (stderr != null)
 
 
-  robot.respond /pihole update subsystems/i, (res) ->
+  robot.respond /pihole up/i, (res) ->
     res.send "updating subsystems for pihole (pihole -up)"
     exec "sudo apt update -y && pihole -up", (error, stdout, stderr) ->
       res.send "err: " + error.toString() if (error != null)
