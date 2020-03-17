@@ -27,7 +27,7 @@ module.exports = (robot) ->
   robot.respond /pihole logs (\d{1,2})$/i, (res) ->
     num_of_logs = res.match[1]
     res.send "Last "+ num_of_logs + " lines of the log: "
-    exec "cat /var/log/pihole.log | tail -n " + num_of_logs, (error, stdout, stderr) ->
+    exec "cat /var/log/pihole.log | grep -v slack | tail -n " + num_of_logs, (error, stdout, stderr) ->
       res.send "err: " + error.toString() if (error != null)
       res.send stdout if (stdout != null)
       res.send "stderr: " + stderr.toString() if (stderr != "")
